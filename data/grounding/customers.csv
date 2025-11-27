@@ -1,0 +1,19 @@
+customer_id,name,email,phone,join_date,frequent_returner
+CUST001,Alice Johnson,alice.johnson@example.com,555-0101,2020-05-12,false
+CUST002,Bob Smith,bob.smith@example.com,555-0102,2019-11-01,true
+CUST003,Carol Lee,carol.lee@example.com,555-0103,2021-07-21,false
+CUST004,David Kim,david.kim@example.com,555-0104,2018-03-15,false
+CUST005,Emily Davis,emily.davis@example.com,555-0105,2022-01-30,false
+CUST006,Frank Brown,frank.brown@example.com,555-0106,2017-06-06,false
+CUST007,Grace Patel,grace.patel@example.com,555-0107,2020-09-09,true
+CUST008,Hector Ruiz,hector.ruiz@example.com,555-0108,2019-04-04,false
+CUST009,Ivy Wang,ivy.wang@example.com,555-0109,2023-02-14,false
+CUST010,Jack Wilson,jack.wilson@example.com,555-0110,2016-12-01,false
+CUST011,Karen White,karen.white@example.com,555-0111,2021-03-03,false
+CUST012,Liam O'Neil,liam.oneil@example.com,555-0112,2018-08-08,false
+CUST013,Maya Singh,maya.singh@example.com,555-0113,2019-02-02,false
+CUST014,Noah Green,noah.green@example.com,555-0114,2024-01-01,false
+CUST015,Olivia Martinez,olivia.martinez@example.com,555-0115,2015-05-05,false
+CUST016,Paul Walker,paul.walker@example.com,555-0116,2014-09-09,false
+CUST017,Quinn Reed,quinn.reed@example.com,555-0117,2017-11-11,false
+CUST018,Rachel Adams,rachel.adams@example.com,555-0118,2023-06-20,false

@@ -1,0 +1,13 @@
+sku,name,category,price,weight_kg,returnable,final_sale,warranty_months
+SKU1001,Acme Bluetooth Headphones,Electronics,49.99,0.25,yes,no,12
+SKU1002,Acme Phone Charger,Accessories,19.99,0.05,yes,no,6
+SKU1003,Acme 4K Monitor,Electronics,299.00,4.5,yes,no,24
+SKU1004,Acme Coffee Maker,Home,149.50,3.2,yes,no,12
+SKU1005,Acme Cotton Socks,Clothing,9.99,0.05,yes,no,0
+SKU1006,Acme Gaming Mouse,Electronics,59.00,0.12,yes,no,12
+SKU1007,Acme Running Shorts,Clothing,25.00,0.15,yes,no,0
+SKU1008,Acme Water Bottle,Home,12.50,0.3,yes,no,6
+SKU1009,Acme DSLR Camera,Electronics,499.99,1.2,yes,no,24
+SKU1010,Acme HDMI Cable,Accessories,79.99,0.2,yes,no,12
+SKU1011,Acme Laptop Stand,Accessories,39.95,1.1,yes,no,12
+SKU1012,Acme Sticker Pack,Accessories,5.99,0.02,no,yes,0

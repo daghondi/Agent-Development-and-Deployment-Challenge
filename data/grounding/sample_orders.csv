@@ -1,0 +1,21 @@
+order_id,order_date,customer_id,sku,quantity,price,purchase_date,status,return_requested_date,reason,photo_url
+ORD0001,2025-10-01,CUST001,SKU1001,1,49.99,2025-09-28,delivered,2025-10-01,Changed mind,
+ORD0002,2025-10-03,CUST002,SKU1002,2,19.99,2025-10-01,delivered,2025-10-03,Arrived damaged,https://example.com/photos/ord0002_1.jpg
+ORD0003,2025-09-15,CUST003,SKU1003,1,299.00,2025-09-10,delivered,2025-09-20,Wrong item sent,
+ORD0004,2025-08-20,CUST004,SKU1004,1,149.50,2025-08-15,delivered,2025-08-30,Not as described,https://example.com/photos/ord0004_1.jpg
+ORD0005,2025-10-10,CUST005,SKU1005,3,9.99,2025-10-08,delivered,2025-10-10,Changed mind,
+ORD0006,2025-09-01,CUST006,SKU1002,1,19.99,2025-08-30,delivered,2025-09-05,Missing parts,
+ORD0007,2025-07-22,CUST007,SKU1006,1,59.00,2025-07-20,delivered,2025-08-01,Final sale - return requested,
+ORD0008,2025-10-12,CUST001,SKU1001,1,49.99,2025-10-09,delivered,2025-10-12,Defective,https://example.com/photos/ord0008_1.jpg
+ORD0009,2025-06-30,CUST008,SKU1007,1,25.00,2025-06-15,delivered,2025-07-01,Wrong size,
+ORD0010,2025-10-15,CUST009,SKU1008,2,12.50,2025-10-10,delivered,2025-10-15,Changed mind,
+ORD0011,2025-09-29,CUST010,SKU1009,1,499.99,2025-09-25,delivered,2025-09-30,Arrived damaged,https://example.com/photos/ord0011_1.jpg
+ORD0012,2025-10-18,CUST011,SKU1010,1,79.99,2025-10-16,delivered,2025-10-18,Not compatible,
+ORD0013,2025-08-05,CUST012,SKU1003,1,299.00,2025-07-30,delivered,2025-08-10,Changed mind,
+ORD0014,2025-09-12,CUST013,SKU1004,2,149.50,2025-09-01,delivered,2025-09-20,Defective,https://example.com/photos/ord0014_1.jpg
+ORD0015,2025-10-20,CUST014,SKU1005,1,9.99,2025-10-18,delivered,2025-10-20,Unwanted gift,
+ORD0016,2025-10-21,CUST015,SKU1008,1,12.50,2025-10-20,delivered,2025-10-21,Changed mind,
+ORD0017,2025-09-06,CUST002,SKU1011,1,39.95,2025-09-01,delivered,2025-09-06,Packaging damaged,https://example.com/photos/ord0017_1.jpg
+ORD0018,2025-08-30,CUST016,SKU1006,1,59.00,2025-08-25,delivered,2025-09-01,Out of warranty,
+ORD0019,2025-10-22,CUST017,SKU1001,1,49.99,2025-10-20,delivered,2025-10-22,Defective,https://example.com/photos/ord0019_1.jpg
+ORD0020,2025-09-18,CUST018,SKU1012,1,5.99,2025-09-10,delivered,2025-09-20,Final sale - return requested,
