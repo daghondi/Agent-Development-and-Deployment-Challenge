@@ -1,0 +1,118 @@
+Agent Development and Deployment Challenge
+Activity Description:
+Throughout this module, you've learned how to design, build, and deploy AI agents using Copilot Studio and Azure AI Foundry. You've explored grounding with knowledge sources, integrating tools like Logic Apps and SharePoint, and publishing your agent to different environments and channels.
+Now it's your turn to demonstrate your mastery by designing and deploying your own AI agent that solves a real business problem end to-end.
+A) Define Your Agent Purpose and Scenario
+1. Choose a real, narrow business problem that could benefit from an AI agent. 
+ We are going to choose: Automating product return handling. 
+2. Write a single sentence purpose for your agent.
+3. Define the scenario scope clearly—limit your ambition to one outcome to reduce ambiguity and improve quality.
+AI agent that automates product return handling, focused on one clear outcome: automatically triage return requests and issue pre-approved return labels for eligible cases.
+Purpose
+Automate the return triage process so customers receive an immediate eligibility decision and, when eligible, an automatically generated return shipping label without manual agent intervention.
+Scenario scope
+Outcome
+Single outcome: Automatically determine return eligibility and issue a pre-approved return label for eligible product returns.
+What is included: intake of return requests (email, web form, or chat), validation of order and product data, rule-based and ML-assisted eligibility decision, automated label generation and email dispatch, and logging the transaction to a SharePoint list or database for audit.
+What is excluded: physical inspection of returned items, refund processing beyond issuing a label, warehouse restocking workflows, and complex fraud investigations.
+Key capabilities and flow
+Input collection — capture order number, SKU, reason for return, photos (optional), and purchase date from customer channels.
+Grounding and verification — validate order and warranty/return window against the ERP or order database; check SKU and purchase date.
+Decision logic — apply business rules (e.g., within 30 days, unopened, not final-sale) and a lightweight ML model for pattern detection (e.g., frequent returners, photo-based damage detection) to decide eligibility.
+Action — for eligible returns, auto-generate a prepaid return label and email it to the customer; for ineligible returns, send a clear, templated explanation with next steps.
+Audit trail — record decision, evidence, and label metadata to SharePoint or a central log for reporting and compliance.
+Success criteria and metrics
+Primary metric: Time to label issuance — target < 2 minutes from request to label for eligible cases.
+Accuracy: Eligibility decision precision ≥ 95% against a human baseline.
+Customer impact: Customer satisfaction (CSAT) for returns improves by 10 percentage points within three months.
+Operational: Reduce manual return-handling volume by 60% in the pilot cohort.
+Constraints and assumptions
+Assume access to order database and label-generation API (carrier integration).
+Privacy: customer data handled per company policy and local regulations.
+Fallback: cases with missing data or ambiguous photos are routed to human agents.
+Grounding note: AI-assisted return automation has been shown to reduce processing time and errors and improve customer satisfaction when combined with rule-based workflows.
+B) Build the Agent in Copilot Studio
+1. Use Copilot Studio to build your first prototype:
+a. Configure clear instructions using prompt engineering techniques.
+b. Ground your agent with at least two knowledge sources.
+c. Add a tool integration using Logic Apps or SharePoint to execute an action.
+2. Publish your agent to Microsoft Teams or another available channel.
+3. Test your agent using realistic inputs and collect at least one real feedback interaction.
+4. Iterate based on your test—update your instructions or tools if necessary.
+Building a Prototype in Copilot Studio
+To build a prototype in Copilot Studio, follow these steps. First, you'll need to set up your environment and gather the necessary knowledge sources, such as SharePoint and product catalogs. Then, integrate tools like Logic Apps to generate labels and log data in SharePoint lists. Finally, publish your solution to Teams for easy access.
+Step 1: Set Up Copilot Studio Environment
+Start by setting up your Copilot Studio environment. Ensure you have access to the necessary knowledge sources, such as SharePoint and product catalogs. You can use Azure Blob or SQL for storing your product catalog or FAQ data.
+Step 2: Integrate Logic Apps
+Next, integrate Logic Apps to automate the process of generating labels and logging data in SharePoint lists. This step is crucial for streamlining your workflow and ensuring that all data is properly logged.
+Step 3: Publish to Teams
+Once your prototype is ready, publish it to Teams. This will allow your team to easily access and interact with the solution. Refer to the Copilot Studio quickstart guide for detailed instructions on publishing.
+Step 4: Testing and Iteration
+After publishing, test your prototype thoroughly. Make sure all integrations are working as expected. Iterate on the design based on feedback and testing results to improve the functionality.
+By following these steps, you'll be able to build a functional prototype in Copilot Studio. Remember to refer to the Copilot Studio documentation and SharePoint knowledge sources for additional guidance 
+Lets walk step-by-step to build, publish, test, and iterate a Copilot Studio agent that triages returns and issues pre-approved labels, including sample prompts, two knowledge sources, a Logic Apps action, Teams publishing steps, and a test/feedback loop.
+1. Prototype in Copilot Studio
+a. Configure clear instructions using prompt engineering
+System instruction (agent persona and goal): You are ReturnBot, an assistant that decides return eligibility and issues prepaid labels when rules are met. Always ask for order number, SKU, purchase date, reason, and optional photos. If data is missing, request it. If eligible, call the label API and log the transaction. If not, send a templated denial with next steps.
+User prompt templates: 
+Intake prompt: “Customer submitted return: order #{order}, SKU {sku}, date {date}, reason {reason}. Validate eligibility and respond with either: ‘ELIGIBLE — generate label’ or ‘INELIGIBLE — reason and next steps’.”
+Decision rubric: encode rules as bullet points (e.g., within 30 days; not final sale; unopened unless damaged).
+Prompt engineering tips: keep instructions deterministic, include explicit fields to extract, and add fallbacks (route to human if ambiguous). Use short examples for positive and negative cases to improve consistency.
+b. Ground with at least two knowledge sources
+SharePoint product returns policy site for up-to-date rules, templates, and audit lists — add as a knowledge source in Copilot Studio using the SharePoint connector.
+Order database or product catalog (mocked as an Azure SQL or CSV uploaded to Studio) to validate order numbers, SKUs, and purchase dates. Add as a file/data source so the agent can ground decisions in real order data.
+Sources: Copilot Studio quickstart and SharePoint knowledge docs provide the steps to add knowledge and test in Studio.
+c. Add a tool integration using Logic Apps or SharePoint
+Logic Apps flow: create a Logic App that accepts a JSON payload (order, sku, labelType) → calls carrier API to create a prepaid label → returns label URL/attachment. Expose it as an HTTP trigger.
+Copilot Studio action: add a custom action that calls the Logic App endpoint when the agent marks a case ELIGIBLE; map outputs to the email template.
+Audit logging: add a SharePoint list write action (or Logic App step) to record decision, evidence, label ID, and timestamp.
+2. Publish to Microsoft Teams
+Use the Copilot Studio publish workflow to enable the Teams channel and deploy the agent as a Teams chatbot or BizChat experience; follow the quickstart publish steps in the Studio docs.
+3. Test and collect feedback
+Test cases: create 10 realistic inputs (eligible, ineligible, missing data, damaged photos). Measure time to label issuance and decision accuracy.
+Collect feedback: embed a short post-interaction survey in the Teams chat asking “Was this helpful?” and capture free-text feedback into the SharePoint log.
+4. Iterate
+Use logged cases and feedback to update prompts, tighten rules, or add a small classifier for photo damage detection. Re-train or refine examples in Studio, then republish and retest.
+C) Rebuild and Extend in Azure AI Foundry
+1. Recreate the same scenario in Azure AI Foundry:
+a. Deploy a model and configure instructions, grounding (via files or Azure AI Search), and tools.
+b. Integrate your Logic App or use a different API tool via OpenAPI specification.
+c. Optionally extend using Semantic Kernel or Microsoft 365 SDKs.
+2. Deploy and expose your agent using Teams, custom web apps, or Microsoft 365.
+3. Present your work:
+a. Record a video (max 3 minutes) explaining your agent, the problem it solves, and the process. Include a short demo.
+b. Submit a document (PDF or Word) detailing:
+- Purpose and scenario chosen
+- Instructions, tools, and grounding sources used in both platforms
+- Challenges faced and iterations made
+- Deployment process and how users will access the agent
+Upload both your video and document to the platform to complete the activity.
+Below is a step-by-step plan to rebuild and extend your return-triage agent in Azure AI Foundry, deploy it to Teams or a web app, and prepare the short video and documentation deliverables.
+Recreate the scenario in Azure AI Foundry
+Deploy model and configure instructions, grounding, and tools
+Deploy a model: Create a Foundry project, choose a suitable LLM deployment (e.g., a conversational model) and deploy it to a runtime endpoint using the Foundry deployment workflow.
+Configure instructions: Add a clear system prompt (agent persona, required fields, decision rubric, fallbacks). Store example positive/negative cases in the agent’s prompt library and enable deterministic response settings (temperature, max tokens) in the deployment configuration.
+Grounding sources: Add two grounding sources: (1) an Azure Cognitive Search index built from your order database and product policy files; (2) a SharePoint site or uploaded policy documents for return rules and email templates. Use Foundry’s file and search grounding features so the agent can cite and use up-to-date facts.
+Important: Use retrieval settings to limit grounding to the most recent policy documents and the specific product category in your pilot.
+Tools and integrations
+OpenAPI tool for label generation: Publish your Logic App as an HTTP endpoint and describe it with an OpenAPI 3.0 spec. Register that OpenAPI spec as a tool in Foundry so the agent can call the label creation operation directly and receive the label URL/ID.
+Audit logging tool: Add a SharePoint write or Azure SQL insert tool (via OpenAPI or built-in connector) to record decisions, evidence, and label metadata.
+Testing: Use Foundry’s tool simulator to validate calls and responses before enabling live credentials.
+Extend with Semantic Kernel or Microsoft 365 SDKs
+Semantic Kernel: Use Semantic Kernel to add code interpretation or image-analysis orchestration (e.g., call a damage-detection microservice on uploaded photos) and wire it into the agent’s workflow for ambiguous cases.
+Microsoft 365 SDKs: If you want richer Teams experiences or calendar/Outlook notifications, integrate Microsoft 365 SDKs to send adaptive cards or schedule follow-ups.
+Deploy and expose the agent
+Publish to Teams or Microsoft 365 Copilot: Use Foundry’s publish workflow to create an agent application and select Teams/Microsoft 365 as targets; Foundry will provision the app registration and bot resources for you.
+Custom web app: Expose the agent via a REST endpoint and embed it in a web UI using the Foundry client SDK or a lightweight web chat component. Secure with managed identities and role-based access.
+Present your work
+Video (max 3 minutes)
+Structure: 30s problem statement; 60s architecture and demo (submit a return, show eligibility + label issuance); 30–60s results and next steps. Record screen: Foundry agent console, a Teams chat demo, and the Logic App run history.
+Tip: Keep the demo to one eligible and one ineligible case.
+Documentation
+Document contents: Purpose and scenario; exact system prompts and decision rubric; grounding sources and OpenAPI/Logic App specs; Semantic Kernel or SDK extensions; deployment steps and access instructions; challenges and iterations.
+Deliverable format: Export as PDF or Word from your editor and attach to your submission.
+Quick checklist before submission
+Grounding verified against live search/index.
+OpenAPI tool registered and tested.
+Teams publish completed and bot tested in tenant.
+One real feedback captured in SharePoint log from a Teams test user.
